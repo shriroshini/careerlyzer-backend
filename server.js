@@ -25,9 +25,12 @@ app.use('/api/resume', resumeRoutes);
 app.use('/api/career', careerRoutes);
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/careerlyzer')
+mongoose
+  .connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log(err));
+  .catch(err => console.error('MongoDB connection error:', err));
+
+  
 
 const PORT = process.env.PORT || 4001;
 app.listen(PORT, () => {
