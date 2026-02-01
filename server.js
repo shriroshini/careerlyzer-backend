@@ -11,11 +11,10 @@ const careerRoutes = require('./routes/career');
 const app = express();
 
 // CORS configuration - allow requests from Netlify frontend
-const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-  credentials: true
-};
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: "*"
+}));
+
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
